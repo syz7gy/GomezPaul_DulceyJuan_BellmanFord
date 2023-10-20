@@ -106,6 +106,21 @@ public class MyLinkedList<E> implements Serializable{
 		return targetNode;
 	}
 	
+	public E data(int n){
+		Node<E> targetNode = null;
+		Node<E> currentNode = this.first;
+		int counter = 0;
+		
+		while(currentNode != null && counter<n) {
+			currentNode = currentNode.getNext();
+			counter++;
+		}
+		if(currentNode != null) {
+			targetNode = currentNode;
+		}
+		return targetNode.getInfo();
+	}
+	
 	public E remove(int n) {
 		if(n<0 || n>=size())throw  new ArrayIndexOutOfBoundsException();
 		E eliminate=null;

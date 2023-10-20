@@ -63,7 +63,6 @@ public class BellmanFord {
 	            System.out.printf("Nodo %d , distance más corta = %d\n", i, distance[i]);
 	        }
 	        System.out.println("\n ________Camino más corto____");
-	        System.out.println("Ingrese vertice destino: ");
 	       
 	    }
 }

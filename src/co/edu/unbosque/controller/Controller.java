@@ -4,9 +4,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Scanner;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import co.edu.unbosque.util.Edge;
+import co.edu.unbosque.util.MyLinkedList;
+import co.edu.unbosque.util.Vertex;
 import co.edu.unbosque.util.algorithm.BellmanFord;
 import co.edu.unbosque.view.ConnectionsMenu;
 import co.edu.unbosque.view.Console;
@@ -87,21 +92,37 @@ public class Controller implements ActionListener, KeyListener {
 		}
 
 		case "botonsubmittodo": {
-			int vertexNum = Integer.parseInt(secMenu.getVertex().getText());
 
+			int E, origen, destino, peso, inicial;
+			int vertexNum = Integer.parseInt(secMenu.getNodes().getText());
 			BellmanFord.vertices = vertexNum;
+			E = Integer.parseInt(secMenu.getVertex().getText());
 			for (int i = 0; i < vertexNum; i++) {
-				JTextField textField = secMenu.getNodes();
-				String strNodes = textField.getText();
-				try {
-					int numNodes = Integer.parseInt(strNodes);
-					// Aquí puedes agregar el código para guardar numNodes donde necesites
-				} catch (NumberFormatException j) {
-					System.out.println("El JTextField contiene un valor no numérico");
-				}
-				// Borra el texto del JTextField
-				textField.setText("");
+				BellmanFord.adyacency.add(new MyLinkedList<>());
 			}
+			for (int i = 0; i < E; i++) {
+				origen = Integer.parseInt(conMenu.getSourceNode().getText());
+				destino = Integer.parseInt(conMenu.getDestinyNode().getText());
+				peso = Integer.parseInt(conMenu.getWeightNode().getText());
+				Vertex newVertex = new Vertex(destino, peso);
+				Vertex otherVertex = new Vertex();
+				BellmanFord.adyacency.data(origen).add(newVertex);
+				BellmanFord.adyacency.data(origen).add(otherVertex);
+				Vertex sourceVertex = BellmanFord.adyacency.data(origen).get(origen).getInfo();
+				Vertex destinationVertex = BellmanFord.adyacency.data(destino).get(destino).getInfo();
+				newVertex.addEdge(new Edge(sourceVertex, destinationVertex, peso));
+				BellmanFord.bellmanFord(origen);
+			}
+			conMenu.getSourceNode().setText("");
+			conMenu.getDestinyNode().setText("");
+			conMenu.getWeightNode().setText("");
+			
+			
+//			Scanner sc = new Scanner(System.in);
+			
+//			System.out.printf("Ingrese el nodo inicial: ");
+//			inicial = sc.nextInt();
+//			BellmanFord.bellmanFord(inicial-1);
 
 		}
 		}

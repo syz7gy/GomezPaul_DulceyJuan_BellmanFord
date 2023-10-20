@@ -114,6 +114,7 @@ public class SecondaryMenu extends JFrame {
 		this.setSize(720, 380);
 		setResizable(false);
 		setLocationRelativeTo(null);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		panel = new JPanel();
 		panel.setLayout(null);
