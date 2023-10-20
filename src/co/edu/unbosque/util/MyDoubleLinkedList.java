@@ -5,13 +5,12 @@ import java.util.Iterator;
 public class MyDoubleLinkedList<T> implements Iterable<T>,Serializable{
 	
 	private static final long serialVersionUID = 8757672675552465564L;
-	protected DNode<T> head, currentPosition;
-	protected int posActual, size;
+	protected DNode<T> head,currentPosition;
+	protected int posActual,size;
 	
 	public MyDoubleLinkedList() {
 		posActual=-1;
 		size=0;
-		head = new DNode<T>();
 	}
 
 	public DNode<T> getHead() {
@@ -108,20 +107,6 @@ public class MyDoubleLinkedList<T> implements Iterable<T>,Serializable{
 		}
 	}
 	
-	public int indexOf(T info){
-		DNode<T> current = this.head;
-		int infopos = -1;
-		
-		if(isEmpty()) {
-			infopos = 0;
-			while(current != null && !current.getInfo().equals(info)) {
-				infopos++;
-				current = current.getNext();
-			}
-		}
-		return infopos;
-	}
-	
 	public void set(int index, T info) {
 		if(posActual>index) backwards(Math.abs(posActual-index));
 		else forward(Math.abs(posActual-index));
@@ -134,40 +119,18 @@ public class MyDoubleLinkedList<T> implements Iterable<T>,Serializable{
 		extract();
 	}
 	
-	public void add(int index, T info) {
+	public void add(int index,T info) {
 		index-=1;
 		if(posActual>index) backwards(Math.abs(posActual-index));
 		else forward(Math.abs(posActual-index));
 		insert(info);
 	}
 	
-	public DNode<T> get(int index) {
-		if(posActual>index) backwards(Math.abs(posActual-index));
-		else forward(Math.abs(posActual-index));
-		return currentPosition;
-	}
-	
-	public T getData(int index) {
+	public T get(int index) {
 		if(posActual>index) backwards(Math.abs(posActual-index));
 		else forward(Math.abs(posActual-index));
 		return currentPosition.getInfo();
 	}
-	
-	public T getDataByInfo(T info) {
-		DNode<T> targetNode = null;
-		DNode<T> currentNode = this.head;
-		int counter = 0;
-		
-		while(currentNode != null && !currentNode.getInfo().equals(info)) {
-			currentNode = currentNode.getNext();
-			counter++;
-		}
-		if(currentNode != null) {
-			targetNode = currentNode;
-		}
-		return targetNode.getInfo();
-	}
-	
 	
 	public boolean isEmpty() {
 		return size==0;
@@ -199,8 +162,7 @@ public class MyDoubleLinkedList<T> implements Iterable<T>,Serializable{
 
 			@Override
 			public T next() {
-				DNode<T> node = get(index);
-				T temp= node.getInfo();
+				T temp=get(index);
 				index++;
 				return temp;
 			}
