@@ -7,7 +7,7 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JTextField;
 
-import co.edu.unbosque.util.algorithm.BellmanFordSP;
+import co.edu.unbosque.util.algorithm.BellmanFord;
 import co.edu.unbosque.view.ConnectionsMenu;
 import co.edu.unbosque.view.Console;
 import co.edu.unbosque.view.MainMenu;
@@ -18,14 +18,14 @@ public class Controller implements ActionListener, KeyListener {
 	private SecondaryMenu secMenu;
 	private ConnectionsMenu conMenu;
 	private Console con;
-	private BellmanFordSP bford;
+	private BellmanFord bford;
 
 	public Controller() {
 		menu = new MainMenu();
 		con = new Console();
 		secMenu = new SecondaryMenu();
 		conMenu = new ConnectionsMenu();
-		bford = new BellmanFordSP();
+		bford = new BellmanFord();
 
 		agregarLectores();
 		asignarOyentes();
@@ -58,8 +58,9 @@ public class Controller implements ActionListener, KeyListener {
 	public void agregarLectores() {
 		secMenu.getSubmit().addActionListener(this);
 		secMenu.getSubmit().setActionCommand("botonsubmitnodo");
-		
-		
+
+		conMenu.getSubmitButton().addActionListener(this);
+		conMenu.getSubmitButton().setActionCommand("botonsubmittodo");
 //
 //		menuel.getBtn2().addActionListener(this);
 //		menuel.getBtn2().setActionCommand("boton2vista2");
@@ -79,29 +80,30 @@ public class Controller implements ActionListener, KeyListener {
 		case "botonsubmitnodo": {
 			secMenu.setVisible(false);
 			conMenu.setVisible(true);
-			
 			break;
-			
+
 //			BellmanFord.bellmanFord(numNodes);
-			
 
 		}
-		
-		case "":{
-			
-			String numNodesStr = secMenu.getNodes().getText();
-			int numNodes = Integer.parseInt(numNodesStr);
-			
+
+		case "botonsubmittodo": {
 			int vertexNum = Integer.parseInt(secMenu.getVertex().getText());
-			
-			String numNodecsStr = conMenu.getSourceNode().getText();
-			int sourceNode = Integer.parseInt(numNodecsStr);
-			conMenu.getSourceNode();
-			
-			BellmanFordSP.setVertices(vertexNum);
-			break;
-		}
 
+			BellmanFord.vertices = vertexNum;
+			for (int i = 0; i < vertexNum; i++) {
+				JTextField textField = secMenu.getNodes();
+				String strNodes = textField.getText();
+				try {
+					int numNodes = Integer.parseInt(strNodes);
+					// Aquí puedes agregar el código para guardar numNodes donde necesites
+				} catch (NumberFormatException j) {
+					System.out.println("El JTextField contiene un valor no numérico");
+				}
+				// Borra el texto del JTextField
+				textField.setText("");
+			}
+
+		}
 		}
 	}
 

@@ -44,7 +44,6 @@ public class MainMenu extends JFrame {
 		this.setSize(1088, 760);
 		setResizable(false);
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	
 		panel = new JPanel();
 		panel.setLayout(null);
