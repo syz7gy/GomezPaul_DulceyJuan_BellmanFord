@@ -7,7 +7,7 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JTextField;
 
-import co.edu.unbosque.util.algorithm.BellmanFord;
+import co.edu.unbosque.util.algorithm.BellmanFordSP;
 import co.edu.unbosque.view.ConnectionsMenu;
 import co.edu.unbosque.view.Console;
 import co.edu.unbosque.view.MainMenu;
@@ -18,14 +18,14 @@ public class Controller implements ActionListener, KeyListener {
 	private SecondaryMenu secMenu;
 	private ConnectionsMenu conMenu;
 	private Console con;
-	private BellmanFord bford;
+	private BellmanFordSP bford;
 
 	public Controller() {
 		menu = new MainMenu();
 		con = new Console();
 		secMenu = new SecondaryMenu();
 		conMenu = new ConnectionsMenu();
-		bford = new BellmanFord();
+		bford = new BellmanFordSP();
 
 		agregarLectores();
 		asignarOyentes();
@@ -58,6 +58,8 @@ public class Controller implements ActionListener, KeyListener {
 	public void agregarLectores() {
 		secMenu.getSubmit().addActionListener(this);
 		secMenu.getSubmit().setActionCommand("botonsubmitnodo");
+		
+		
 //
 //		menuel.getBtn2().addActionListener(this);
 //		menuel.getBtn2().setActionCommand("boton2vista2");
@@ -78,7 +80,7 @@ public class Controller implements ActionListener, KeyListener {
 			secMenu.setVisible(false);
 			conMenu.setVisible(true);
 			
-			
+			break;
 			
 //			BellmanFord.bellmanFord(numNodes);
 			
@@ -96,8 +98,8 @@ public class Controller implements ActionListener, KeyListener {
 			int sourceNode = Integer.parseInt(numNodecsStr);
 			conMenu.getSourceNode();
 			
-			BellmanFord.vertices = vertexNum;
-			
+			BellmanFordSP.setVertices(vertexNum);
+			break;
 		}
 
 		}
