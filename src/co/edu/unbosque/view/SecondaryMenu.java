@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
 
+import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -118,32 +119,38 @@ public class SecondaryMenu extends JFrame {
 
 		panel = new JPanel();
 		panel.setLayout(null);
-		panel.setBackground(new Color(0, 234, 0));
+		panel.setBackground(new Color(0, 0, 0));
 		panel.setBounds(0, 0, 1088, 760);
 
 		mainTitle = new JLabel("Nodes");
 		mainTitle.setFont(new Font("Helvetica", Font.BOLD, 26));
+		mainTitle.setForeground(Color.WHITE);
 		mainTitle.setBounds(314, 57, 81, 36);
 
 		info = new JLabel("Enter how many nodes you want to use");
 		info.setFont(new Font("Helvetica", Font.PLAIN, 14));
+		info.setForeground(Color.WHITE);
 		info.setBounds(229, 109, 251, 20);
 
 		infoNode = new JLabel("Enter the number of nodes:");
 		infoNode.setFont(new Font("Helvetica", Font.PLAIN, 14));
+		infoNode.setForeground(Color.WHITE);
 		infoNode.setBounds(105, 161, 190, 19);
 
 		nodes = new JTextField();
+		nodes.setBorder(BorderFactory.createEmptyBorder());
 		nodes.setBounds(119, 189, 145, 31);
 
 		infoVertex = new JLabel("Enter the number of edges:");
 		infoVertex.setFont(new Font("Helvetica", Font.PLAIN, 14));
+		infoVertex.setForeground(Color.WHITE);
 		infoVertex.setBounds(427, 161, 190, 19);
 
 		vertex = new JTextField();
+		vertex.setBorder(BorderFactory.createEmptyBorder());
 		vertex.setBounds(439, 189, 145, 31);
 
-		submit = new JButton();
+		submit = new JButton("Next");
 		submit.setBounds(294, 270, 120, 32);
 
 		panel.add(submit);

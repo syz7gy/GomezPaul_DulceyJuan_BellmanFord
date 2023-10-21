@@ -3,6 +3,7 @@ package co.edu.unbosque.view;
 import java.awt.Color;
 import java.awt.Font;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -25,17 +26,19 @@ public class ShowAll extends JFrame{
 		
 		panel = new JPanel();
 		panel.setLayout(null);
-		panel.setBackground(new Color(0, 234, 0));
+		panel.setBackground(new Color(0, 0, 0));
 		panel.setBounds(0, 0, 1088, 760);
 		
 		mainTitle = new JLabel("Show all");
 		mainTitle.setFont(new Font("Helvetica", Font.BOLD, 26));
 		mainTitle.setBounds(311, 33, 110, 36);
+		mainTitle.setForeground(Color.WHITE);
 		
 		scrollPane = new JScrollPane();
+		scrollPane.setBorder(BorderFactory.createEmptyBorder());
 		scrollPane.setBounds(74, 83, 580, 213);
 		
-		backButton = new JButton();
+		backButton = new JButton("Back");
 		backButton.setBounds(31, 318, 120, 32);
 		
 		
@@ -43,7 +46,7 @@ public class ShowAll extends JFrame{
 		panel.add(scrollPane);
 		panel.add(mainTitle);
 		add(panel);
-		setVisible(true);
+		setVisible(false);
 
 	}
 
