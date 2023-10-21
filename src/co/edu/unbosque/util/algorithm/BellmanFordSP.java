@@ -5,13 +5,13 @@ import co.edu.unbosque.util.MyLinkedList;
 import co.edu.unbosque.util.Vertex;
 
 public class BellmanFordSP {
-    static final int MAX = 105;
-    static final int INF = 1 << 30;
-    static int[] previous = new int[MAX];
-    static int[] distance = new int[MAX];
-    static int vertices;
-    static MyLinkedList<MyLinkedList<Vertex>> adyacencia = new MyLinkedList<MyLinkedList<Vertex>>();
-    static Scanner sc = new Scanner(System.in);
+    public static final int MAX = 105;
+    public static final int INF = 1 << 30;
+    public static int[] previous = new int[MAX];
+    public static int[] distance = new int[MAX];
+    public static int vertices;
+    public static MyLinkedList<MyLinkedList<Vertex>> adyacencia = new MyLinkedList<MyLinkedList<Vertex>>();
+    public static Scanner sc = new Scanner(System.in);
 
     public static int[] getPrevious() {
 		return previous;

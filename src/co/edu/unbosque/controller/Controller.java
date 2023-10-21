@@ -4,15 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Scanner;
-
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 import co.edu.unbosque.util.Edge;
 import co.edu.unbosque.util.MyLinkedList;
 import co.edu.unbosque.util.Vertex;
-import co.edu.unbosque.util.algorithm.BellmanFord;
+import co.edu.unbosque.util.algorithm.BellmanFordSP;
 import co.edu.unbosque.view.ConnectionsMenu;
 import co.edu.unbosque.view.Console;
 import co.edu.unbosque.view.MainMenu;
@@ -23,14 +19,14 @@ public class Controller implements ActionListener, KeyListener {
 	private SecondaryMenu secMenu;
 	private ConnectionsMenu conMenu;
 	private Console con;
-	private BellmanFord bford;
+	private BellmanFordSP bford;
 
 	public Controller() {
 		menu = new MainMenu();
 		con = new Console();
 		secMenu = new SecondaryMenu();
 		conMenu = new ConnectionsMenu();
-		bford = new BellmanFord();
+		bford = new BellmanFordSP();
 
 		agregarLectores();
 		asignarOyentes();
@@ -87,7 +83,7 @@ public class Controller implements ActionListener, KeyListener {
 			conMenu.setVisible(true);
 			break;
 
-//			BellmanFord.bellmanFord(numNodes);
+//			BellmanFordSP.BellmanFordSP(numNodes);
 
 		}
 
@@ -95,10 +91,10 @@ public class Controller implements ActionListener, KeyListener {
 
 			int E, origen, destino, peso, inicial;
 			int vertexNum = Integer.parseInt(secMenu.getNodes().getText());
-			BellmanFord.vertices = vertexNum;
+			BellmanFordSP.vertices = vertexNum;
 			E = Integer.parseInt(secMenu.getVertex().getText());
 			for (int i = 0; i < vertexNum; i++) {
-				BellmanFord.adyacency.add(new MyLinkedList<>());
+				BellmanFordSP.adyacencia.add(new MyLinkedList<>());
 			}
 			for (int i = 0; i < E; i++) {
 				origen = Integer.parseInt(conMenu.getSourceNode().getText());
@@ -106,12 +102,12 @@ public class Controller implements ActionListener, KeyListener {
 				peso = Integer.parseInt(conMenu.getWeightNode().getText());
 				Vertex newVertex = new Vertex(destino, peso);
 				Vertex otherVertex = new Vertex();
-				BellmanFord.adyacency.data(origen).add(newVertex);
-				BellmanFord.adyacency.data(origen).add(otherVertex);
-				Vertex sourceVertex = BellmanFord.adyacency.data(origen).get(origen).getInfo();
-				Vertex destinationVertex = BellmanFord.adyacency.data(destino).get(destino).getInfo();
+				BellmanFordSP.adyacencia.data(origen).add(newVertex);
+				BellmanFordSP.adyacencia.data(origen).add(otherVertex);
+				Vertex sourceVertex = BellmanFordSP.adyacencia.data(origen).get(origen).getInfo();
+				Vertex destinationVertex = BellmanFordSP.adyacencia.data(destino).get(destino).getInfo();
 				newVertex.addEdge(new Edge(sourceVertex, destinationVertex, peso));
-				BellmanFord.bellmanFord(origen);
+				BellmanFordSP.bellmanFord(origen);
 			}
 			conMenu.getSourceNode().setText("");
 			conMenu.getDestinyNode().setText("");
@@ -122,7 +118,7 @@ public class Controller implements ActionListener, KeyListener {
 			
 //			System.out.printf("Ingrese el nodo inicial: ");
 //			inicial = sc.nextInt();
-//			BellmanFord.bellmanFord(inicial-1);
+//			BellmanFordSP.BellmanFordSP(inicial-1);
 
 		}
 		}
