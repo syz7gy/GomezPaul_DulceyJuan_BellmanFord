@@ -109,11 +109,8 @@ public class BellmanFordSP {
         System.out.println("No existe ciclo negativo");
         System.out.printf("distancias más cortas iniciando en el nodo %d\n", inicial);
         for (int i = 0; i < vertices; i++) {
-            System.out.printf("Nodo %d , distance más corta = %d\n", i, distance[i]);
+            System.out.printf("Nodo %d , distanceimás corta = %d\n", i, distance[i]);
         }
-        System.out.println("\n ________Camino más corto____");
-        System.out.println("Ingrese vertice destino: ");
-        System.out.println("");
     }
 
 }

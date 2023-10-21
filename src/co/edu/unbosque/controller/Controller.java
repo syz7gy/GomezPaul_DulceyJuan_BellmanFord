@@ -83,8 +83,6 @@ public class Controller implements ActionListener, KeyListener {
 			conMenu.setVisible(true);
 			break;
 
-//			BellmanFordSP.BellmanFordSP(numNodes);
-
 		}
 
 		case "botonsubmittodo": {
@@ -101,24 +99,18 @@ public class Controller implements ActionListener, KeyListener {
 				destino = Integer.parseInt(conMenu.getDestinyNode().getText());
 				peso = Integer.parseInt(conMenu.getWeightNode().getText());
 				Vertex newVertex = new Vertex(destino, peso);
-				Vertex otherVertex = new Vertex();
 				BellmanFordSP.adyacencia.data(origen).add(newVertex);
-				BellmanFordSP.adyacencia.data(origen).add(otherVertex);
-				Vertex sourceVertex = BellmanFordSP.adyacencia.data(origen).get(origen).getInfo();
-				Vertex destinationVertex = BellmanFordSP.adyacencia.data(destino).get(destino).getInfo();
-				newVertex.addEdge(new Edge(sourceVertex, destinationVertex, peso));
-				BellmanFordSP.bellmanFord(origen);
+				if(E > 1) {
+					BellmanFordSP.bellmanFord(origen);
+					break;
+				} else {
+					BellmanFordSP.bellmanFord(origen);
+				}
 			}
 			conMenu.getSourceNode().setText("");
 			conMenu.getDestinyNode().setText("");
 			conMenu.getWeightNode().setText("");
 			
-			
-//			Scanner sc = new Scanner(System.in);
-			
-//			System.out.printf("Ingrese el nodo inicial: ");
-//			inicial = sc.nextInt();
-//			BellmanFordSP.BellmanFordSP(inicial-1);
 
 		}
 		}

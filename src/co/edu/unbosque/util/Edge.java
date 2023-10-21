@@ -4,17 +4,21 @@ public class Edge {
 	
 	private Vertex source;
 	private Vertex destination;
-	private double wight;
+	private double weight;
 	
 	public Edge() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Edge(Vertex source, Vertex destination, double wight) {
+	public Edge(Vertex source, Vertex destination, double weight) {
 		super();
 		this.source = source;
 		this.destination = destination;
-		this.wight = wight;
+		this.weight = weight;
+	}
+	
+	public Edge(int source, int destination, int weight) {
+		
 	}
 
 	public Vertex getSource() {
@@ -33,17 +37,17 @@ public class Edge {
 		this.destination = destination;
 	}
 
-	public double getWight() {
-		return wight;
+	public double getweight() {
+		return weight;
 	}
 
-	public void setWight(double wight) {
-		this.wight = wight;
+	public void setweight(double weight) {
+		this.weight = weight;
 	}
 
 	@Override
 	public String toString() {
-		return "Edge [source=" + source.getName() + ", destination=" + destination.getName() + ", wight=" + wight + "]\n";
+		return "Edge [source=" + source.getName() + ", destination=" + destination.getName() + ", weight=" + weight + "]\n";
 	}
 	
 

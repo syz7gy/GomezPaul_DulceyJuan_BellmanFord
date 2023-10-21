@@ -18,6 +18,11 @@ public class Vertex {
 		this.name = name;
 		this.edges = new MyLinkedList<Edge>();
 	}
+	
+	public Vertex(int name) {
+		this.name = String.valueOf(name);
+		this.edges = new MyLinkedList<Edge>();
+	}
 
 	public Vertex() {
 		// TODO Auto-generated constructor stub
